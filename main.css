@@ -63,7 +63,7 @@
     --primary-color-scrolled: rgba(76, 175, 80, 0.95);
     --secondary-color: #007bff;
     --accent-color: #FFD700;
-    --body-bg-image-light: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('../images/תמונת\ רקע\ של\ ים2.jpg');
+    --body-bg-image-light: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('images/תמונת\ רקע\ של\ ים2.jpg');
     --body-text-color-light: #333333;
     --body-bg-image-dark: #111111;
     --body-text-color-dark: white;
