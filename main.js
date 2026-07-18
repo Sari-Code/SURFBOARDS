@@ -6,7 +6,7 @@ const nav = document.querySelector('nav');
 
 moon.addEventListener('click', () => {
     if (isDarkMode) {
-        body.style.background = 'linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("תמונת רקע של ים2.png")';
+        body.style.background = 'linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("תמונת רקע של ים2.jpg")';
         body.style.backgroundSize = 'cover';
         body.style.backgroundPosition = 'center center';
         body.style.backgroundAttachment = 'fixed';
