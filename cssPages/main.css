@@ -1,0 +1,561 @@
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(-100px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(100px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(46, 204, 113, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+}
+
+/* New Keyframes for Logo Shrink */
+@keyframes shrinkLogo {
+    0% { width: 250px; } /* גודל התחלתי */
+    100% { width: 100px; } /* גודל סופי */
+}
+
+/* Image styles */
+.rotating-image {
+    width: 250px; /* גודל התחלתי */
+    height: auto;
+    animation: spin 4s linear infinite; /* אנימציה קיימת של סיבוב */
+    transition: width 1s ease-in-out, transform 1s ease; /* מעבר חלק לשינוי רוחב וטרנספורם */
+}
+
+/* Updated class for shrinking the logo with animation and continuous spin */
+.rotating-image.shrink-after-delay {
+    animation: shrinkLogo 1s ease-in-out forwards, spin 4s linear infinite; /* הפעלת אנימציית הקטנה יחד עם אנימציית הסיבוב */
+    /* forwards שומר על המצב הסופי של ההקטנה */
+}
+
+/* The existing small-image class can still be used for immediate size change if needed */
+.small-image {
+    width: 100px;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Root variables */
+:root {
+    --bg-light: #f8f8f8;
+    --bg-grey-light: #ffffff;
+    --text-dark: #333333;
+    --text-grey: #666666;
+    --border-light: #e0e0e0;
+    --box-shadow-light: rgba(0, 0, 0, 0.1);
+    --primary-color: rgba(76, 175, 80, 0.8);
+    --primary-color-scrolled: rgba(76, 175, 80, 0.95);
+    --secondary-color: #007bff;
+    --accent-color: #FFD700;
+    --body-bg-image-light: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('../images/תמונת\ רקע\ של\ ים2.jpg');
+    --body-text-color-light: #333333;
+    --body-bg-image-dark: #111111;
+    --body-text-color-dark: white;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background: var(--body-bg-image-light);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    color: var(--body-text-color-light);
+    margin: 0;
+    transition: background 0.8s ease, color 0.8s ease;
+    direction: rtl;
+    text-align: right;
+    overflow-x: hidden;
+}
+
+/* Header styles */
+header {
+    position: relative;
+    width: 100%;
+    min-height: 75px;
+}
+
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: var(--primary-color);
+    padding: 30px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 8px 8px;
+    transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+nav.scrolled {
+    padding: 13px 0;
+    background-color: var(--primary-color-scrolled);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+nav a {
+    text-decoration: none;
+    color: #f0f0f0;
+    padding: 10px 25px;
+    margin: 0 10px;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+nav.scrolled a {
+    padding: 5px 15px;
+    font-size: 0.9em;
+    transition: padding 0.3s ease, font-size 0.3s ease, transform 0.3s ease;
+}
+nav a:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    transition: width 0.4s ease-in-out;
+    z-index: -1;
+}
+nav a:hover:before {
+    width: 100%;
+}
+nav a:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--secondary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+    transform-origin: bottom right;
+}
+nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.active {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Moon button styles */
+#moon {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.5s ease;
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    z-index: 1001;
+    font-size: 24px;
+}
+#moon:hover {
+    background-color: var(--border-light);
+    transform: scale(1.05) rotate(15deg);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Open cart button styles */
+.open-cart-button {
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.4);
+    animation: pulse 2.5s infinite;
+}
+.open-cart-button:hover {
+    background-color: #27ae60;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(46, 204, 113, 0.6);
+    animation: none;
+}
+.open-cart-button .cart-count {
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+/* Footer styles */
+.site-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    direction: rtl;
+    font-family: Arial, sans-serif;
+    margin-top: 40px;
+    animation: fadeInUp 1s ease-out;
+}
+.footer-section-about {
+    margin-bottom: 15px;
+}
+.site-footer h3 {
+    color: #00bcd4;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+.site-footer p {
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+.footer-contact-links {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.footer-contact-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.footer-contact-links a:hover {
+    color: #00bcd4;
+    transform: translateY(-4px);
+}
+.footer-contact-links a i {
+    font-size: 22px;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+.footer-bottom {
+    font-size: 0.8em;
+    color: #aaa;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+}
+
+/* Subtitle styles */
+#subtitle {
+    text-align: center;
+    font-size: 3.5em;
+    color: var(--accent-color);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    margin-top: 50px;
+    animation: fadeIn 1.5s ease-out, text-shadow-pop-top 1s both;
+}
+@keyframes text-shadow-pop-top {
+    0% { text-shadow: 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555; transform: translateY(0); }
+    100% { text-shadow: 0 -1px #555555, 0 -2px #555555, 0 -3px #555555, 0 -4px #555555; transform: translateY(4px); }
+}
+
+/* Video styles */
+.video {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-bottom: 40px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 1.2s ease-out 0.5s backwards;
+}
+.video video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background: #111111;
+    color: white;
+}
+
+/* Chat Button - No major changes, just ensure it's at the bottom right */
+.chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2000;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.chat-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-3px);
+}
+
+/* Chat Modal - Positioned to the side, initially hidden off-screen */
+.chat-modal {
+    display: block;
+    position: fixed;
+    z-index: 2001;
+    bottom: 20px;
+    right: -320px; /* תשאיר אותו מוסתר לפי רוחב החלון */
+    width: 100%;
+    max-width: 300px;
+    max-height: 12cm; /* כאן השינוי לגובה */
+    background-color: transparent;
+    transition: right 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.chat-modal.active {
+    right: 20px;
+    pointer-events: auto;
+}
+
+.chat-modal-content {
+    background-color: var(--bg-grey-light);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 300px;
+    height: 12cm; /* השינוי כאן לגובה מדויק */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid var(--border-light);
+    overflow: hidden;
+}
+
+body.dark-mode .chat-modal-content {
+    background-color: #2c3e50; /* Darker background for modal content */
+    border-color: #4a6c8e;
+    color: white; /* Text color in dark mode */
+}
+
+/* Close Button Styling */
+.close-button {
+    color: var(--text-grey);
+    font-size: 32px; /* Slightly larger */
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    left: 15px; /* RTL adjustment */
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--text-dark);
+    transform: none; /* Little spin on hover */
+}
+
+body.dark-mode .close-button {
+    color: #ccc;
+}
+body.dark-mode .close-button:hover {
+    color: white;
+}
+
+/* Chat Messages Area */
+.chat-messages {
+    flex-grow: 1; /* Allows message area to take available space */
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Slightly more space between messages */
+    scroll-behavior: smooth;
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.05); /* Inner shadow for depth */
+}
+
+body.dark-mode .chat-messages {
+    background-color: #34495e; /* Darker background for messages area */
+    border-color: #4a6c8e;
+}
+
+/* Individual Chat Message Styling */
+.chat-message {
+    padding: 12px 18px; /* Slightly more padding */
+    border-radius: 20px; /* More rounded bubbles */
+    max-width: 85%; /* Slightly wider messages */
+    word-wrap: break-word;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+    animation: fadeInUpMessage 0.4s ease-out; /* New animation for individual messages */
+}
+
+/* New animation for messages fading in */
+@keyframes fadeInUpMessage {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-message.bot {
+    background-color: var(--secondary-color);
+    color: white;
+    align-self: flex-start;
+    border-bottom-right-radius: 5px; /* Pointed corner */
+}
+
+.chat-message.user {
+    background-color: #e0e0e0;
+    color: var(--text-dark);
+    align-self: flex-end;
+    border-bottom-left-radius: 5px; /* Pointed corner */
+}
+
+body.dark-mode .chat-message.user {
+    background-color: #616a72; /* Darker user message bubble */
+    color: white;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: flex;
+    gap: 5px;
+    padding: 10px 15px;
+    align-self: flex-start;
+    font-style: italic;
+    color: var(--text-grey);
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background-color: var(--text-grey);
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-8px); }
+}
+
+/* Chat Input Area */
+.chat-input-area {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input-area input[type="text"] {
+    flex-grow: 1;
+    padding: 12px 18px; /* Slightly more padding */
+    border: 1px solid var(--border-light);
+    border-radius: 25px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+body.dark-mode .chat-input-area input[type="text"] {
+    background-color: #444;
+    border-color: #666;
+    color: white;
+}
+
+.chat-input-area input[type="text"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3); /* Stronger focus shadow */
+}
+
+.chat-input-area .send-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 22px; /* Slightly more padding */
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chat-input-area .send-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chat-input-area .send-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}

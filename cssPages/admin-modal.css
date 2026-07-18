@@ -1,0 +1,160 @@
+/* admin-modal.css */
+.modal {
+    display: none; /* מוסתר כברירת מחדל */
+    position: fixed; /* נשאר במקום גם בגלילה */
+    z-index: 1000; /* נדאג שיופיע מעל הכל */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* אפשרות גלילה אם התוכן גדול מדי */
+    background-color: rgba(0, 0, 0, 0.6); /* רקע שחור שקוף */
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px; /* רווח מלמעלה כדי לאפשר מיקום נוח */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; /* כדי למרכז */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%; /* רוחב מסוים */
+    max-width: 500px; /* רוחב מקסימלי */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: fadeIn 0.5s ease-out; /* אנימציית הופעה */
+}
+
+.modal-content h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.admin-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.admin-section.hidden {
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+    width: calc(100% - 20px); /* מרווח פנימי */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* ודא שהפאדינג לא יוסיף רוחב */
+}
+
+.cta-button {
+    background-color: #4CAF50; /* ירוק יפה */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+.message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* מצב כהה למודאל */
+body.dark-mode .modal-content {
+    background-color: #333;
+    color: white;
+    border-color: #555;
+}
+body.dark-mode .modal-content h2 {
+    color: #eee;
+}
+body.dark-mode .form-group label {
+    color: #bbb;
+}
+body.dark-mode .form-group input[type="text"],
+body.dark-mode .form-group input[type="password"],
+body.dark-mode .form-group input[type="number"],
+body.dark-mode .form-group textarea,
+body.dark-mode .form-group select {
+    background-color: #444;
+    border-color: #666;
+    color: white;
+}
+body.dark-mode .message.success {
+    background-color: #28a745;
+    color: white;
+    border-color: #218838;
+}
+body.dark-mode .message.error {
+    background-color: #dc3545;
+    color: white;
+    border-color: #c82333;
+}

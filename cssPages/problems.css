@@ -1,0 +1,238 @@
+/* problems.css - עיצוב משופר עם אנימציות */
+
+:root {
+    --item-background-color-light: #f5f5f5; /* גוון מעט שונה */
+    --item-background-color-dark: #3a3a3a;
+}
+
+.page-container {
+    max-width: 1050px;
+    margin: 90px auto 50px auto;
+    padding: 35px;
+    background-color: transparent;
+    border-radius: 15px;
+    box-shadow: none;
+    direction: rtl;
+    text-align: right;
+    overflow: hidden;
+}
+
+.page-title {
+    font-size: 3.8em;
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--border-light);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out;
+}
+
+body.dark-mode .page-title {
+    border-bottom-color: #555;
+    color: #0099ff;
+}
+
+.section-qa, .section-maintenance, .section-videos {
+    margin-bottom: 60px;
+    padding: 40px;
+    background-color: transparent;
+    border-radius: 12px;
+    box-shadow: none;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.section-qa h2, .section-maintenance h2, .section-videos h2 {
+    font-size: 3em;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* סקשן שאלות נפוצות */
+.qa-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+}
+
+.qa-item {
+    background-color: var(--item-background-color-light);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-right-width 0.3s ease;
+    border-right: 4px solid var(--secondary-color);
+    animation: fadeInUp 0.8s ease-out backwards;
+}
+.qa-grid .qa-item:nth-child(odd) { animation-delay: 0.2s; }
+.qa-grid .qa-item:nth-child(even) { animation-delay: 0.4s; }
+
+
+body.dark-mode .qa-item {
+    background-color: var(--item-background-color-dark);
+    box-shadow: 0 3px 15px rgba(255, 255, 255, 0.07);
+    border-right-color: #007bff;
+}
+
+.qa-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-right-width: 8px; /* הדגשת הפס הצדדי */
+}
+
+.qa-item h3 {
+    font-size: 1.5em;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+}
+
+.qa-item h3 i {
+    color: var(--primary-color);
+    font-size: 1.4em;
+    transition: transform 0.4s ease;
+}
+.qa-item:hover h3 i {
+    transform: rotate(10deg);
+}
+
+/* סקשן טיפול ותחזוקה */
+.intro-text {
+    font-size: 1.3em;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 1.9;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.maintenance-item {
+    background-color: var(--item-background-color-light);
+    padding: 25px 30px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    border-right: 5px solid var(--primary-color);
+    animation: slideInRight 0.8s ease-out backwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.section-maintenance .maintenance-item:nth-child(2) { animation-delay: 0.2s; }
+.section-maintenance .maintenance-item:nth-child(3) { animation-delay: 0.4s; }
+.section-maintenance .maintenance-item:nth-child(4) { animation-delay: 0.6s; }
+.section-maintenance .maintenance-item:nth-child(5) { animation-delay: 0.8s; }
+
+.maintenance-item:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.maintenance-item h3 {
+    font-size: 1.7em;
+    color: var(--primary-color);
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+.maintenance-item ul li {
+    font-size: 1.15em;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.6;
+}
+
+.maintenance-item ul li i {
+    color: #27ae60;
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+
+/* סקשן סרטונים */
+.section-videos .video-item {
+    margin-bottom: 35px;
+    background-color: var(--item-background-color-light);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    animation: fadeInUp 1s ease-out;
+}
+
+.section-videos .video-item:last-child {
+    animation-delay: 0.3s;
+}
+
+.section-videos .video-item h3 {
+    font-size: 2em;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease;
+}
+.video-wrapper:hover {
+    transform: scale(1.02);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+/* קריאה לפעולה */
+.contact-prompt {
+    text-align: center;
+    margin-top: 70px;
+    padding: 50px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    animation: fadeInUp 1s ease-out;
+}
+
+.contact-prompt .cta-button {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 16px 40px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.3em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-block;
+    letter-spacing: 0.05em;
+}
+
+.contact-prompt .cta-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-7px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}

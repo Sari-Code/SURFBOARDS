@@ -1,0 +1,165 @@
+.checkout-container {
+    max-width: 600px;
+    margin: 60px auto 40px auto;
+    padding: 40px;
+    background-color: var(--bg-grey-light);
+    border-radius: 15px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    text-align: right;
+    animation: fadeInScale 1s ease-out forwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+body.dark-mode .checkout-container {
+    background-color: #2b2b2b;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.08);
+}
+
+.checkout-container h1 {
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    animation: fadeInUp 0.8s ease-out backwards;
+}
+/* דירוג הופעת השדות */
+.form-group:nth-of-type(1) { animation-delay: 0.3s; }
+.form-group:nth-of-type(2) { animation-delay: 0.4s; }
+.form-group:nth-of-type(3) { animation-delay: 0.5s; }
+.form-group:nth-of-type(4) { animation-delay: 0.6s; }
+/* ...and so on */
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="number"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 1em;
+    color: var(--text-dark);
+    background-color: var(--bg-grey-light);
+    transition: all 0.3s ease;
+    box-sizing: border-box; 
+}
+
+body.dark-mode .form-group input {
+    background-color: #333;
+    border-color: #555;
+    color: #f0f0f0;
+}
+
+.form-group input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 10px 3px rgba(52, 152, 219, 0.25);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+.payment-summary {
+    background-color: #f5faff; /* רקע מעט שונה להדגשה */
+    border: 1px solid #e0e0e0;
+    border-left: 5px solid var(--secondary-color); /* פס הדגשה */
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 40px;
+    color: var(--text-dark);
+    animation: slideInLeft 1s ease-out 1s backwards;
+}
+
+body.dark-mode .payment-summary {
+    background-color: #333;
+    border-color: #555;
+    border-left-color: var(--accent-color);
+}
+
+.payment-summary h2 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #ccc;
+    transition: background-color 0.3s ease;
+    padding: 8px;
+    border-radius: 5px;
+}
+.summary-item:hover {
+    background-color: #e9f5ff;
+}
+
+body.dark-mode .summary-item {
+    border-bottom-color: #666;
+}
+body.dark-mode .summary-item:hover {
+    background-color: #3a3a3a;
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #27ae60;
+    margin-top: 10px;
+}
+
+.summary-item span:first-child {
+    font-weight: 500;
+}
+
+.submit-button {
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px 25px;
+    font-size: 1.3em;
+    font-weight: bold;
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.submit-button:hover {
+    background-color: #27ae60;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.submit-button:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}

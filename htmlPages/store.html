@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HydroGlide - גלריית גלשנים</title>
+    <link rel="stylesheet" href="../cssPages/main.css" />
+    <link rel="stylesheet" href="../cssPages/store.css" />
+    <link rel="stylesheet" href="../cssPages/admin-modal.css" />
+    <link rel="stylesheet" href="../cssPages/admin-button.css">
+    <link rel="stylesheet" href="../cssPages/cart.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="icon" type="image/png" href="../images/goodLogo.png">
+</head>
+<body>
+    <header>
+        <img src="../images/goodLogo.png" alt="לוגו HydroGlide" class="rotating-image" id="myImage">
+        <button id="adminPortalBtn" class="admin-portal-button" title="פתח פורטל מנהל">
+            <i class="fas fa-tools"></i>
+        </button>
+        <nav>
+            <a href="../htmlPages/homePage.html">בית</a>
+            <a class="active" href="../htmlPages/store.html">חנות</a>
+            <a href="../htmlPages/about_us.html">אודות</a>
+            <a href="../htmlPages/problems.html">שאלות נפוצות</a>
+            <a href="../htmlPages/Contact _us.html">צור קשר</a>
+            <a href="../htmlPages/pay.html">תשלום</a>
+        </nav>
+        <button id="moon" aria-label="מצב לילה">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-stars" viewBox="0 0 16 16">
+                <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
+                <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
+            </svg>
+        </button>
+        <button class="open-cart-button">
+            <i class="fas fa-shopping-cart"></i> עגלה <span class="cart-count">0</span>
+        </button>
+    </header>
+
+    <div class="cart-fixed-panel" id="cartFixedPanel">
+        <h2><i class="fas fa-shopping-cart"></i> עגלת קניות</h2>
+        <ul id="cartItemsList" class="cart-items-list">
+            </ul>
+        <div class="cart-total">
+            <span>סה"כ:</span>
+            <span id="cartTotalPrice">₪0</span>
+        </div>
+        <button id="clearCartBtn" class="checkout-button" style="background-color: #e74c3c;">נקה סל</button>
+        <a href="../htmlPages/pay.html" class="checkout-button">לתשלום</a>
+    </div>
+
+    <div class="filter-section" style="text-align: center; margin: 20px 0;">
+        <label for="categorySelect">סנן לפי קטגוריה:</label>
+        <select id="categorySelect">
+            <option value="all" selected>הכל</option>
+            <option value="kids">ילדים</option>
+            <option value="pro">מקצועיים</option>
+            <option value="classic">קלאסיים</option>
+            <option value="electric">חשמליים</option>
+        </select>
+    </div>
+
+    <main>
+        <div class="image-gallery">
+            </div>
+    </main>
+
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" aria-label="סגור חלון">&times;</span>
+
+            <div id="adminLogin" class="admin-section">
+                <h2>כניסת מנהל</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">שם משתמש:</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">סיסמה:</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="cta-button">התחבר</button>
+                    <p id="loginMessage" class="message"></p>
+                </form>
+            </div>
+
+            <div id="addProductForm" class="admin-section hidden">
+                <h2>הוסף מוצר חדש</h2>
+                <form id="newProductForm">
+                    <div class="form-group">
+                        <label for="newProductName">שם:</label>
+                        <input type="text" id="newProductName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newProductDescription">תיאור:</label>
+                        <textarea id="newProductDescription" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="newProductPrice">מחיר:</label>
+                        <input type="number" id="newProductPrice" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newProductCategory">קטגוריה:</label>
+                        <select id="newProductCategory" required>
+                            <option value="">בחר קטגוריה</option>
+                            <option value="classic">קלאסי</option>
+                            <option value="pro">מקצועי</option>
+                            <option value="kids">ילדים</option>
+                            <option value="electric">חשמלי</option>
+                            <option value="sup">סאפ</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="newProductImage">נתיב תמונה (לדוגמה: ../../images-20250611T151137Z-1-001/image.png):</label>
+                        <input type="text" id="newProductImage" required>
+                    </div>
+                    <button type="submit" class="cta-button">הוסף מוצר</button>
+                    <p id="productMessage" class="message"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <button id="openChatBtn" class="chat-button" title="פתח צ'אט עם רובי">
+        <i class="fas fa-comments"></i> צ'אט עם רובי
+    </button>
+    <div id="chatModal" class="chat-modal">
+        <div class="chat-modal-content">
+            <span class="close-button" aria-label="סגור צ'אט">&times;</span>
+            <div id="chatMessages" class="chat-messages">
+                </div>
+            <div id="chatInputArea" class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="הקלד כאן...">
+                <button id="sendChatBtn" class="send-button">שלח</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-section-about">
+            <h3>אודותינו</h3>
+            <p>אנחנו מתמחים בציוד ספורט ימי איכותי שיעזור לכם לכבוש את הגל הבא! אנו מחויבים למוצרים הטובים ביותר ושירות מעולה.</p>
+        </div>
+        <div class="footer-contact-links">
+            <h3>דרכי יצירת קשר</h3>
+            <a href="#"><i class="fas fa-sms"></i> SMS</a>
+            <a href="#" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+            <a href="#"><i class="fas fa-envelope"></i> אימייל</a>
+            <button id="adminLoginBtn" style="background:none; border:none; color:white; cursor:pointer; font-size: 1em;" title="כניסה למנהלים"><i class="fas fa-user-shield"></i> כניסת מנהל</button>
+        </div>
+        <div class="footer-bottom">
+            <span id="current-year-simple"></span> כל הזכויות שמורות.
+        </div>
+    </footer>
+
+    <script src="../jsPages/main.js"></script>
+    <!-- <script src="../../jsPages-20250611T151138Z-1-001/store.js"></script> -->
+     <script src="../jsPages/store.js"></script>
+    <script src="../jsPages/cart.js"></script>
+    <script src="../jsPages/admin.js"></script>
+</body>
+</html>

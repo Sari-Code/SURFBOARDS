@@ -1,0 +1,77 @@
+/* admin-button.css */
+
+.admin-portal-button {
+    background-color: #f39c12; /* צבע כתום בולט */
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 50px; /* צורה עגולה/אליפטית */
+    cursor: pointer;
+    font-size: 1.2em; /* גודל אייקון */
+    font-weight: bold;
+    transition: all 0.4s ease;
+    position: fixed; /* מקם את הכפתור באופן קבוע על המסך */
+    bottom: 20px; /* 20 פיקסלים מהתחתית */
+    left: 20px; /* 20 פיקסלים מהצד הימני */
+    z-index: 1000; /* וודא שהוא מעל רוב האלמנטים */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* צל עדין */
+    animation: bounceIn 1s forwards, pulseOrange 2s infinite 1s; /* אנימציות כניסה ופעימה */
+    min-width: 50px; /* מינימום רוחב עבור האייקון */
+    height: 50px; /* מינימום גובה עבור האייקון */
+}
+
+.admin-portal-button:hover {
+    background-color: #e67e22; /* צבע כהה יותר במעבר עכבר */
+    transform: translateY(-5px) scale(1.08); /* הרמה והגדלה קלה */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); /* צל מודגש יותר */
+}
+
+.admin-portal-button:active {
+    transform: translateY(0) scale(0.95); /* אפקט לחיצה */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* אנימציות */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(20px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05) translateY(-10px);
+    }
+    70% {
+        transform: scale(0.9) translateY(5px);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulseOrange {
+    0% {
+        box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(243, 156, 18, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(243, 156, 18, 0);
+    }
+}
+
+/* התאמה למצב כהה */
+body.dark-mode .admin-portal-button {
+    background-color: #d35400; /* צבע כתום כהה יותר למצב כהה */
+    box-shadow: 0 8px 15px rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .admin-portal-button:hover {
+    background-color: #e67e22;
+    box-shadow: 0 12px 25px rgba(255, 255, 255, 0.25);
+}
