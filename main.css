@@ -357,23 +357,26 @@ body.dark-mode {
     transform: translateY(-3px);
 }
 
-/* Chat Modal - Positioned to the side, initially hidden off-screen */
 .chat-modal {
     display: block;
     position: fixed;
     z-index: 2001;
     bottom: 20px;
-    right: -320px; /* תשאיר אותו מוסתר לפי רוחב החלון */
+    right: -400px;
     width: 100%;
     max-width: 300px;
-    max-height: 12cm; /* כאן השינוי לגובה */
+    max-height: 12cm;
     background-color: transparent;
-    transition: right 0.5s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    transition: right 0.5s ease-in-out, opacity 0.4s ease, visibility 0.4s;
     pointer-events: none;
 }
 
 .chat-modal.active {
     right: 20px;
+    opacity: 1;
+    visibility: visible;
     pointer-events: auto;
 }
 
